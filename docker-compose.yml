@@ -1,11 +1,17 @@
 version: "2"
 services:
+  ember:
+    image: cecemel/ember-fastboot-proxy-service:0.1.0
+    links:
+      - identifier:backend
+    ports:
+      - "80:80"
+    volumes:
+      - /Users/felix/git/blogpost/mu-fastboot-example-frontend/dist:/dist
   identifier:
     image: semtech/mu-identifier:1.0.0
     links:
       - dispatcher:dispatcher
-    ports:
-      - "80:80"
   dispatcher:
     image: semtech/mu-dispatcher:1.0.1
     links:
